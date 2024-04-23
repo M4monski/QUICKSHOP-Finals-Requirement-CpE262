@@ -20,7 +20,12 @@ namespace Finals_Requirement_CpE262
 
         private void Admin_Load(object sender, EventArgs e)
         {
-
+            Label_ADash.BackColor = Color.Transparent;
+            But_AddProd.BackColor = Color.Transparent;
+            But_DelProd.BackColor = Color.Transparent;
+            But_ManageProducts.BackColor = Color.Transparent;
+            But_ManageAcc.BackColor = Color.Transparent;
+            But_SalesRep.BackColor = Color.Transparent;
         }
 
         private void But_Back_Click(object sender, EventArgs e)
@@ -33,6 +38,41 @@ namespace Finals_Requirement_CpE262
         private void But_AdminExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void But_ManageAcc_Click(object sender, EventArgs e)
+        {
+            ManageAccounts accounts = new ManageAccounts();
+            accounts.Show();
+            this.Hide();
+        }
+
+        private void But_AddProd_Click(object sender, EventArgs e)
+        {
+            AddProduct product = new AddProduct();
+            product.Show();
+            this.Hide();
+        }
+
+        private void But_DelProd_Click(object sender, EventArgs e)
+        {
+            DeleteProduct delprod = new DeleteProduct();
+            delprod.Show();
+            this.Hide();
+        }
+
+        private void But_SalesRep_Click(object sender, EventArgs e)
+        {
+            Sales sales = new Sales();
+            this.Hide();
+            sales.Show();
+        }
+
+        private void But_ManageProducts_Click(object sender, EventArgs e)
+        {
+            ManageProducts manage = new ManageProducts();
+            this.Hide();
+            manage.Show();
         }
     }
 }

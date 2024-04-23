@@ -26,8 +26,15 @@ namespace Finals_Requirement_CpE262
 
         private void But_Admin_Click(object sender, EventArgs e)
         {
-            Admin admin = new Admin();
-            admin.Show();
+            AdminLogin login = new AdminLogin();
+            login.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Checkout cart = new Checkout();
+            cart.Show();
             this.Hide();
         }
     }
