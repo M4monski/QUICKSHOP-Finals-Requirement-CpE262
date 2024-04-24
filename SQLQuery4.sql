@@ -1,0 +1,2 @@
+﻿ALTER TABLE SalesHistory
+ADD ReceiptID INT IDENTITY(1,1);

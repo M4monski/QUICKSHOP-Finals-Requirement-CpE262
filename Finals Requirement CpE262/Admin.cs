@@ -63,7 +63,7 @@ namespace Finals_Requirement_CpE262
 
         private void But_SalesRep_Click(object sender, EventArgs e)
         {
-            Sales sales = new Sales();
+            SalesHistory sales = new SalesHistory();
             this.Hide();
             sales.Show();
         }

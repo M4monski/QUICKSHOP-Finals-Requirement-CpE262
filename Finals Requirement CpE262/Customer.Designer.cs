@@ -58,7 +58,6 @@
             G2But_Browse = new Guna.UI2.WinForms.Guna2Button();
             G2Tbox_Search = new Guna.UI2.WinForms.Guna2TextBox();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            LBL_CartItems = new Label();
             G2TButt_ViewCart = new Guna.UI2.WinForms.Guna2TileButton();
             G2TBut_Home = new Guna.UI2.WinForms.Guna2TileButton();
             G2TBut_SHOWMAIN = new Guna.UI2.WinForms.Guna2TileButton();
@@ -162,7 +161,6 @@
             // guna2Panel1
             // 
             guna2Panel1.BackColor = Color.White;
-            guna2Panel1.Controls.Add(LBL_CartItems);
             guna2Panel1.Controls.Add(G2TButt_ViewCart);
             guna2Panel1.Controls.Add(G2TBut_Home);
             guna2Panel1.Controls.Add(G2TBut_SHOWMAIN);
@@ -174,15 +172,6 @@
             guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges18;
             guna2Panel1.Size = new Size(106, 600);
             guna2Panel1.TabIndex = 12;
-            // 
-            // LBL_CartItems
-            // 
-            LBL_CartItems.AutoSize = true;
-            LBL_CartItems.Location = new Point(65, 165);
-            LBL_CartItems.Name = "LBL_CartItems";
-            LBL_CartItems.Size = new Size(17, 20);
-            LBL_CartItems.TabIndex = 4;
-            LBL_CartItems.Text = "0";
             // 
             // G2TButt_ViewCart
             // 
@@ -372,7 +361,6 @@
             Text = "CustomerTEST";
             Load += CustomerTEST_Load;
             guna2Panel1.ResumeLayout(false);
-            guna2Panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -384,7 +372,6 @@
         private Guna.UI2.WinForms.Guna2Button G2But_Browse;
         private Guna.UI2.WinForms.Guna2TextBox G2Tbox_Search;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Label LBL_CartItems;
         private Guna.UI2.WinForms.Guna2TileButton G2TButt_ViewCart;
         private Guna.UI2.WinForms.Guna2TileButton G2TBut_Home;
         private Guna.UI2.WinForms.Guna2TileButton G2TBut_SHOWMAIN;

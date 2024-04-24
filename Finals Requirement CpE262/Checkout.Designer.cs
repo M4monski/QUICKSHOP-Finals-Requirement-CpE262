@@ -50,6 +50,16 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges16 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges17 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges18 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges27 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges28 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges19 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges25 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges26 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             PrintReceipt = new System.Drawing.Printing.PrintDocument();
             G2Tbox_CustName = new Guna.UI2.WinForms.Guna2TextBox();
             Lbl_CustName = new Label();
@@ -77,8 +87,14 @@
             G2Tbox_CardNumber = new Guna.UI2.WinForms.Guna2TextBox();
             label7 = new Label();
             G2GBox_CardDetails = new Guna.UI2.WinForms.Guna2GroupBox();
+            guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            G2TButt_ViewCart = new Guna.UI2.WinForms.Guna2TileButton();
+            G2TBut_Home = new Guna.UI2.WinForms.Guna2TileButton();
+            G2TBut_SHOWMAIN = new Guna.UI2.WinForms.Guna2TileButton();
+            G2TButton_Exit = new Guna.UI2.WinForms.Guna2TileButton();
             ((System.ComponentModel.ISupportInitialize)G2DGV_Products).BeginInit();
             G2GBox_CardDetails.SuspendLayout();
+            guna2Panel1.SuspendLayout();
             SuspendLayout();
             // 
             // PrintReceipt
@@ -96,7 +112,7 @@
             G2Tbox_CustName.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             G2Tbox_CustName.Font = new Font("Inter", 9F);
             G2Tbox_CustName.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            G2Tbox_CustName.Location = new Point(35, 58);
+            G2Tbox_CustName.Location = new Point(134, 58);
             G2Tbox_CustName.Margin = new Padding(3, 4, 3, 4);
             G2Tbox_CustName.Name = "G2Tbox_CustName";
             G2Tbox_CustName.PasswordChar = '\0';
@@ -110,7 +126,7 @@
             // 
             Lbl_CustName.AutoSize = true;
             Lbl_CustName.Font = new Font("Inter", 12F);
-            Lbl_CustName.Location = new Point(35, 25);
+            Lbl_CustName.Location = new Point(134, 25);
             Lbl_CustName.Name = "Lbl_CustName";
             Lbl_CustName.Size = new Size(71, 24);
             Lbl_CustName.TabIndex = 1;
@@ -140,7 +156,7 @@
             dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
             G2DGV_Products.DefaultCellStyle = dataGridViewCellStyle3;
             G2DGV_Products.GridColor = Color.FromArgb(231, 229, 255);
-            G2DGV_Products.Location = new Point(35, 112);
+            G2DGV_Products.Location = new Point(134, 112);
             G2DGV_Products.Name = "G2DGV_Products";
             G2DGV_Products.RowHeadersVisible = false;
             G2DGV_Products.RowHeadersWidth = 51;
@@ -207,12 +223,13 @@
             printPreviewDialog1.Icon = (Icon)resources.GetObject("printPreviewDialog1.Icon");
             printPreviewDialog1.Name = "printPreviewDialog1";
             printPreviewDialog1.Visible = false;
+            printPreviewDialog1.FormClosing += printPreviewDialog1_FormClosing;
             // 
             // Lbl_Total
             // 
             Lbl_Total.AutoSize = true;
             Lbl_Total.Font = new Font("Inter", 12F);
-            Lbl_Total.Location = new Point(422, 464);
+            Lbl_Total.Location = new Point(521, 464);
             Lbl_Total.Name = "Lbl_Total";
             Lbl_Total.Size = new Size(62, 24);
             Lbl_Total.TabIndex = 19;
@@ -222,7 +239,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Inter", 12F);
-            label1.Location = new Point(72, 464);
+            label1.Location = new Point(171, 464);
             label1.Name = "label1";
             label1.Size = new Size(172, 24);
             label1.TabIndex = 20;
@@ -235,7 +252,7 @@
             G2IRB_Card.ImageOffset = new Point(0, 0);
             G2IRB_Card.ImageRotate = 0F;
             G2IRB_Card.ImageSize = new Size(40, 40);
-            G2IRB_Card.Location = new Point(47, 491);
+            G2IRB_Card.Location = new Point(146, 491);
             G2IRB_Card.Name = "G2IRB_Card";
             G2IRB_Card.PressedState.Image = (Image)resources.GetObject("resource.Image1");
             G2IRB_Card.PressedState.ImageSize = new Size(40, 40);
@@ -251,7 +268,7 @@
             G2IRB_Cash.ImageOffset = new Point(0, 0);
             G2IRB_Cash.ImageRotate = 0F;
             G2IRB_Cash.ImageSize = new Size(40, 40);
-            G2IRB_Cash.Location = new Point(161, 491);
+            G2IRB_Cash.Location = new Point(260, 491);
             G2IRB_Cash.Name = "G2IRB_Cash";
             G2IRB_Cash.PressedState.Image = (Image)resources.GetObject("resource.Image3");
             G2IRB_Cash.PressedState.ImageSize = new Size(40, 40);
@@ -264,7 +281,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Inter", 10F);
-            label2.Location = new Point(71, 568);
+            label2.Location = new Point(170, 568);
             label2.Name = "label2";
             label2.Size = new Size(48, 20);
             label2.TabIndex = 21;
@@ -274,7 +291,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Inter", 10F);
-            label3.Location = new Point(183, 568);
+            label3.Location = new Point(282, 568);
             label3.Name = "label3";
             label3.Size = new Size(50, 20);
             label3.TabIndex = 22;
@@ -284,7 +301,7 @@
             // 
             Lbl_Payment.AutoSize = true;
             Lbl_Payment.Font = new Font("Inter", 12F);
-            Lbl_Payment.Location = new Point(422, 501);
+            Lbl_Payment.Location = new Point(521, 501);
             Lbl_Payment.Name = "Lbl_Payment";
             Lbl_Payment.Size = new Size(99, 24);
             Lbl_Payment.TabIndex = 23;
@@ -303,7 +320,7 @@
             G2Tbox_Payment.Font = new Font("Inter", 9F);
             G2Tbox_Payment.ForeColor = Color.Black;
             G2Tbox_Payment.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            G2Tbox_Payment.Location = new Point(422, 529);
+            G2Tbox_Payment.Location = new Point(521, 529);
             G2Tbox_Payment.Margin = new Padding(3, 4, 3, 4);
             G2Tbox_Payment.Name = "G2Tbox_Payment";
             G2Tbox_Payment.PasswordChar = '\0';
@@ -318,7 +335,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Inter", 12F);
-            label5.Location = new Point(481, 464);
+            label5.Location = new Point(580, 464);
             label5.Name = "label5";
             label5.Size = new Size(22, 24);
             label5.TabIndex = 25;
@@ -338,7 +355,7 @@
             G2But_ConfirmPayment.Font = new Font("Inter", 9F);
             G2But_ConfirmPayment.ForeColor = Color.Black;
             G2But_ConfirmPayment.Image = (Image)resources.GetObject("G2But_ConfirmPayment.Image");
-            G2But_ConfirmPayment.Location = new Point(47, 594);
+            G2But_ConfirmPayment.Location = new Point(146, 594);
             G2But_ConfirmPayment.Name = "G2But_ConfirmPayment";
             G2But_ConfirmPayment.ShadowDecoration.CustomizableEdges = customizableEdges8;
             G2But_ConfirmPayment.Size = new Size(213, 68);
@@ -471,7 +488,7 @@
             G2GBox_CardDetails.CustomizableEdges = customizableEdges17;
             G2GBox_CardDetails.Font = new Font("Segoe UI", 9F);
             G2GBox_CardDetails.ForeColor = Color.Black;
-            G2GBox_CardDetails.Location = new Point(305, 464);
+            G2GBox_CardDetails.Location = new Point(404, 464);
             G2GBox_CardDetails.Name = "G2GBox_CardDetails";
             G2GBox_CardDetails.ShadowDecoration.CustomizableEdges = customizableEdges18;
             G2GBox_CardDetails.Size = new Size(369, 198);
@@ -479,13 +496,105 @@
             G2GBox_CardDetails.UseTransparentBackground = true;
             G2GBox_CardDetails.Visible = false;
             // 
+            // guna2Panel1
+            // 
+            guna2Panel1.BackColor = Color.White;
+            guna2Panel1.Controls.Add(G2TButt_ViewCart);
+            guna2Panel1.Controls.Add(G2TBut_Home);
+            guna2Panel1.Controls.Add(G2TBut_SHOWMAIN);
+            guna2Panel1.Controls.Add(G2TButton_Exit);
+            guna2Panel1.CustomizableEdges = customizableEdges27;
+            guna2Panel1.Dock = DockStyle.Left;
+            guna2Panel1.Location = new Point(0, 0);
+            guna2Panel1.Name = "guna2Panel1";
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges28;
+            guna2Panel1.Size = new Size(106, 674);
+            guna2Panel1.TabIndex = 35;
+            // 
+            // G2TButt_ViewCart
+            // 
+            G2TButt_ViewCart.CustomizableEdges = customizableEdges19;
+            G2TButt_ViewCart.DisabledState.BorderColor = Color.DarkGray;
+            G2TButt_ViewCart.DisabledState.CustomBorderColor = Color.DarkGray;
+            G2TButt_ViewCart.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            G2TButt_ViewCart.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            G2TButt_ViewCart.FillColor = Color.White;
+            G2TButt_ViewCart.Font = new Font("Inter", 9F);
+            G2TButt_ViewCart.ForeColor = Color.Black;
+            G2TButt_ViewCart.Image = (Image)resources.GetObject("G2TButt_ViewCart.Image");
+            G2TButt_ViewCart.ImageSize = new Size(25, 25);
+            G2TButt_ViewCart.Location = new Point(12, 168);
+            G2TButt_ViewCart.Name = "G2TButt_ViewCart";
+            G2TButt_ViewCart.ShadowDecoration.CustomizableEdges = customizableEdges20;
+            G2TButt_ViewCart.Size = new Size(80, 72);
+            G2TButt_ViewCart.TabIndex = 3;
+            G2TButt_ViewCart.Text = "View Cart";
+            G2TButt_ViewCart.Click += G2TButt_ViewCart_Click;
+            // 
+            // G2TBut_Home
+            // 
+            G2TBut_Home.CustomizableEdges = customizableEdges21;
+            G2TBut_Home.DisabledState.BorderColor = Color.DarkGray;
+            G2TBut_Home.DisabledState.CustomBorderColor = Color.DarkGray;
+            G2TBut_Home.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            G2TBut_Home.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            G2TBut_Home.FillColor = Color.White;
+            G2TBut_Home.Font = new Font("Inter", 9F);
+            G2TBut_Home.ForeColor = Color.Black;
+            G2TBut_Home.Image = (Image)resources.GetObject("G2TBut_Home.Image");
+            G2TBut_Home.Location = new Point(12, 90);
+            G2TBut_Home.Name = "G2TBut_Home";
+            G2TBut_Home.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            G2TBut_Home.Size = new Size(80, 72);
+            G2TBut_Home.TabIndex = 2;
+            G2TBut_Home.Text = "Home";
+            G2TBut_Home.Click += G2TBut_Home_Click;
+            // 
+            // G2TBut_SHOWMAIN
+            // 
+            G2TBut_SHOWMAIN.CustomizableEdges = customizableEdges23;
+            G2TBut_SHOWMAIN.DisabledState.BorderColor = Color.DarkGray;
+            G2TBut_SHOWMAIN.DisabledState.CustomBorderColor = Color.DarkGray;
+            G2TBut_SHOWMAIN.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            G2TBut_SHOWMAIN.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            G2TBut_SHOWMAIN.FillColor = Color.White;
+            G2TBut_SHOWMAIN.Font = new Font("Inter", 9F);
+            G2TBut_SHOWMAIN.ForeColor = Color.Black;
+            G2TBut_SHOWMAIN.Image = (Image)resources.GetObject("G2TBut_SHOWMAIN.Image");
+            G2TBut_SHOWMAIN.ImageSize = new Size(100, 100);
+            G2TBut_SHOWMAIN.Location = new Point(12, 12);
+            G2TBut_SHOWMAIN.Name = "G2TBut_SHOWMAIN";
+            G2TBut_SHOWMAIN.ShadowDecoration.CustomizableEdges = customizableEdges24;
+            G2TBut_SHOWMAIN.Size = new Size(80, 72);
+            G2TBut_SHOWMAIN.TabIndex = 1;
+            // 
+            // G2TButton_Exit
+            // 
+            G2TButton_Exit.CustomizableEdges = customizableEdges25;
+            G2TButton_Exit.DisabledState.BorderColor = Color.DarkGray;
+            G2TButton_Exit.DisabledState.CustomBorderColor = Color.DarkGray;
+            G2TButton_Exit.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            G2TButton_Exit.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            G2TButton_Exit.FillColor = Color.White;
+            G2TButton_Exit.Font = new Font("Inter", 9F);
+            G2TButton_Exit.ForeColor = Color.Black;
+            G2TButton_Exit.Image = (Image)resources.GetObject("G2TButton_Exit.Image");
+            G2TButton_Exit.Location = new Point(12, 584);
+            G2TButton_Exit.Name = "G2TButton_Exit";
+            G2TButton_Exit.ShadowDecoration.CustomizableEdges = customizableEdges26;
+            G2TButton_Exit.Size = new Size(80, 72);
+            G2TButton_Exit.TabIndex = 0;
+            G2TButton_Exit.Text = "Exit";
+            G2TButton_Exit.Click += G2TButton_Exit_Click;
+            // 
             // Checkout
             // 
             AutoScaleDimensions = new SizeF(9F, 19F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources._2;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(705, 674);
+            ClientSize = new Size(801, 674);
+            Controls.Add(guna2Panel1);
             Controls.Add(G2GBox_CardDetails);
             Controls.Add(G2But_ConfirmPayment);
             Controls.Add(label5);
@@ -510,6 +619,7 @@
             ((System.ComponentModel.ISupportInitialize)G2DGV_Products).EndInit();
             G2GBox_CardDetails.ResumeLayout(false);
             G2GBox_CardDetails.PerformLayout();
+            guna2Panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -543,5 +653,10 @@
         private Guna.UI2.WinForms.Guna2TextBox G2Tbox_CardNumber;
         private Label label7;
         private Guna.UI2.WinForms.Guna2GroupBox G2GBox_CardDetails;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
+        private Guna.UI2.WinForms.Guna2TileButton G2TButt_ViewCart;
+        private Guna.UI2.WinForms.Guna2TileButton G2TBut_Home;
+        private Guna.UI2.WinForms.Guna2TileButton G2TBut_SHOWMAIN;
+        private Guna.UI2.WinForms.Guna2TileButton G2TButton_Exit;
     }
 }

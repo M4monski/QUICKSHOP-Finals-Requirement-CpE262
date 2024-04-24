@@ -30,12 +30,5 @@ namespace Finals_Requirement_CpE262
             login.Show();
             this.Hide();
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Checkout cart = new Checkout();
-            cart.Show();
-            this.Hide();
-        }
     }
 }

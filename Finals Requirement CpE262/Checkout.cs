@@ -5,7 +5,10 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,12 +17,13 @@ namespace Finals_Requirement_CpE262
 {
     public partial class Checkout : Form
     {
+        private static readonly RandomNumberGenerator rng = RandomNumberGenerator.Create();
+
         public Checkout()
         {
             InitializeComponent();
         }
 
-        
         private void Checkout_Load(object sender, EventArgs e)
         {
             label1.BackColor = Color.Transparent;
@@ -46,62 +50,89 @@ namespace Finals_Requirement_CpE262
             change = Payment - Total;
             return change;
         }
+
+        private static string GenerateInvoiceNumber()
+        {
+            byte[] bytes = new byte[8];
+            rng.GetBytes(bytes);
+            long invoiceNumber = BitConverter.ToInt64(bytes, 0);
+            return $"{DateTime.Now:yyyyMMdd}-{invoiceNumber:X}";
+        }
+
+
         private void G2But_ConfirmPayment_Click_1(object sender, EventArgs e) //Button
         {
             try
             {
-                if (G2IRB_Cash.Checked)
+                // Check if the DataGridView has any rows
+                if (G2DGV_Products.Rows.Count > 1)
                 {
-                    // Display the receipt for cash payment
-                    if (GetChange(decimal.Parse(G2Tbox_Payment.Text), CalculateTotalPrice()) >= 0)
+                    if (G2IRB_Cash.Checked)
                     {
-                        //ANG CODE NGA NAGHIMO SA PAPEL NA BUTANGAN SA RESIBO
-                        printPreviewDialog1.Document = PrintReceipt;
-                        PrintReceipt.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("Receipt", 600, 800); // Adjusted paper size
-                        printPreviewDialog1.ShowDialog();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid payment amount.", "Invalid payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }
-
-                if (G2IRB_Card.Checked)
-                {
-                    string cardNumberInput = G2Tbox_CardNumber.Text.Trim().Replace(" ", "");
-                    long cvv;
-                    if (long.TryParse(cardNumberInput, out long cardNumber) && long.TryParse(G2Tbox_CVV.Text.Trim(), out cvv))
-                    {
-                        if (cardNumberInput.Length == 16)
+                        // Display the receipt for cash payment
+                        if (GetChange(decimal.Parse(G2Tbox_Payment.Text), CalculateTotalPrice()) >= 0)
                         {
+                            SaveReceiptToDatabase();
 
-                            if (G2Tbox_CVV.Text.Trim().Length == 3)
+                            //ANG CODE NGA NAGHIMO SA PAPEL NA BUTANGAN SA RESIBO
+                            printPreviewDialog1.Document = PrintReceipt;
+                            PrintReceipt.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("Receipt", 600, 800); // Adjusted paper size
+                            printPreviewDialog1.ShowDialog();
+
+                            ClearCartTable();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid payment amount.", "Invalid payment", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+
+                    if (G2IRB_Card.Checked)
+                    {
+                        string cardNumberInput = G2Tbox_CardNumber.Text.Trim().Replace(" ", "");
+                        long cvv;
+                        if (long.TryParse(cardNumberInput, out long cardNumber) && long.TryParse(G2Tbox_CVV.Text.Trim(), out cvv))
+                        {
+                            if (cardNumberInput.Length == 16)
                             {
-                                if (G2Cbox_Month.SelectedItem != null && G2Cbox_Year.SelectedItem != null)
+
+                                if (G2Tbox_CVV.Text.Trim().Length == 3)
                                 {
-                                    printPreviewDialog1.Document = PrintReceipt; //printpreviewdialog1 is toolbox pud, and ang printrecipt tool
-                                    PrintReceipt.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("Receipt", 600, 800); // Adjusted paper size
-                                    printPreviewDialog1.ShowDialog();
+                                    if (G2Cbox_Month.SelectedItem != null && G2Cbox_Year.SelectedItem != null)
+                                    {
+                                        SaveReceiptToDatabase();
+
+                                        printPreviewDialog1.Document = PrintReceipt; //printpreviewdialog1 is toolbox pud, and ang printrecipt tool
+                                        PrintReceipt.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("Receipt", 600, 800); // Adjusted paper size
+                                        printPreviewDialog1.ShowDialog();
+
+                                        ClearCartTable();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Please select a month", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Please select a month", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    MessageBox.Show("Invalid card CVV", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Invalid card CVV", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Invalid card number", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Invalid card number", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            MessageBox.Show("Please enter valid numeric values for card number and CVV", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    else
-                    {
-                        MessageBox.Show("Please enter valid numeric values for card number and CVV", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                }
+                else
+                {
+                    // Cart is empty, display message or handle accordingly
+                    MessageBox.Show("Your cart is empty. Please add products before confirming payment.", "Empty Cart", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch
@@ -119,6 +150,7 @@ namespace Finals_Requirement_CpE262
             int startX = 10;
             int startY = 10;
             int offset = 20;  // Reduced spacing between QUICKSHOP header and store information
+            string invoiceNumber = GenerateInvoiceNumber();
 
             // Get the width of the graphics area
             int graphicsWidth = e.PageBounds.Width;
@@ -138,7 +170,7 @@ namespace Finals_Requirement_CpE262
             string addressLine1 = "N. Bacalso Ave, Cebu City, 6000 Cebu";
             string contactInfo = "0927 576 7079 / keithharvey.angel@cit.edu";
             string currentDate = DateTime.Now.ToString();
-            string invoiceID = "Invoice ID: BUTNGI NI PLS";
+            string invoiceID = $"Invoice ID: {invoiceNumber}";
             string customerName = "Customer: " + G2Tbox_CustName.Text.Trim();
 
 
@@ -208,7 +240,6 @@ namespace Finals_Requirement_CpE262
 
                         offset = offset + (int)fontHeight;  // Move to the next line
                     }
-
                     reader.Close();
                 }
             }
@@ -239,7 +270,7 @@ namespace Finals_Requirement_CpE262
                 graphics.DrawString(GetChange(decimal.Parse(G2Tbox_Payment.Text), CalculateTotalPrice()).ToString("₱" + "#,##0.00"), itemFont, Brushes.Black, startX + 470, startY + offset + 60);
             }
 
-            if(G2IRB_Card.Checked)
+            if (G2IRB_Card.Checked)
             {
                 // Draw labels at startX + 325
                 graphics.DrawString("Total Price:", itemFont, Brushes.Black, startX + 375, startY + offset + 20);
@@ -269,6 +300,7 @@ namespace Finals_Requirement_CpE262
             graphics.DrawString(Gratitude, itemFont, Brushes.Black, centerXGratitude, centerYGratitude);
 
             graphics.DrawString(Storename, itemFont, Brushes.Black, centerXStorename, centerYStorename);
+
 
         }
 
@@ -334,6 +366,142 @@ namespace Finals_Requirement_CpE262
             Lbl_Payment.Visible = false;
             G2Tbox_Payment.Visible = false;
             G2GBox_CardDetails.Visible = true;
+        }
+
+        private void printPreviewDialog1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+
+            Application.Exit();
+        }
+
+        private void ClearCartTable()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\CPELOGIN;Initial Catalog=LOGIN;Integrated Security=True"))
+                {
+                    string query = "DELETE FROM Cart";
+                    SqlCommand command = new SqlCommand(query, conn);
+
+                    conn.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected <= 0)
+                    {
+                        MessageBox.Show("No items found in the cart.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error clearing cart: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void SaveReceiptToDatabase()
+        {
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\CPELOGIN;Initial Catalog=LOGIN;Integrated Security=True"))
+                {
+                    conn.Open();
+
+                    string query = @"INSERT INTO SalesHistory (InvoiceNumber, ChosenProducts, Quantity, Price, TotalCost, DateOfSale, CustomerName)
+                     VALUES (@InvoiceNumber, @ChosenProducts, @Quantity, @Price, @TotalCost, @DateOfSale, @CustomerName)";
+
+                    SqlCommand command = new SqlCommand(query, conn);
+                    command.Parameters.AddWithValue("@InvoiceNumber", GenerateInvoiceNumber());
+                    command.Parameters.AddWithValue("@ChosenProducts", GetChosenProducts(conn).Trim()); // Trim the product names
+                    command.Parameters.AddWithValue("@Quantity", GetProductQuantities(conn)); // Fetch quantities from Cart table
+                    command.Parameters.AddWithValue("@Price", GetProductPrices(conn)); // Fetch prices from Cart table
+                    command.Parameters.AddWithValue("@TotalCost", CalculateTotalPrice());
+                    command.Parameters.AddWithValue("@DateOfSale", DateTime.Now);
+                    command.Parameters.AddWithValue("@CustomerName", G2Tbox_CustName.Text.Trim());
+                    //command.Parameters.AddWithValue("@CashierName", "YourCashierNameHere"); // You can set the cashier name dynamically
+
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected <= 0)
+                    {
+                        MessageBox.Show("Failed to save receipt details to database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error saving receipt details to database: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Helper methods to get product details from Cart table
+        private string GetChosenProducts(SqlConnection conn)
+        {
+            string products = string.Empty;
+            try
+            {
+                string query = "SELECT ProductName FROM Cart";
+                SqlCommand command = new SqlCommand(query, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    // Trim each product name before appending to the string
+                    string productName = reader["ProductName"].ToString().Trim();
+                    products += productName + ", ";
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error fetching chosen products: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return products.TrimEnd(',', ' '); // Trim any trailing comma and space
+        }
+
+        private string GetProductQuantities(SqlConnection conn)
+        {
+            string quantities = "";
+            string query = "SELECT ProductQuantity FROM Cart";
+            SqlCommand command = new SqlCommand(query, conn);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                quantities += reader["ProductQuantity"].ToString() + ", ";
+            }
+            reader.Close();
+            return quantities.TrimEnd(',', ' '); // Remove trailing comma and space
+        }
+
+        private string GetProductPrices(SqlConnection conn)
+        {
+            string prices = "";
+            string query = "SELECT ProductPrice FROM Cart";
+            SqlCommand command = new SqlCommand(query, conn);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                prices += Convert.ToDecimal(reader["ProductPrice"]).ToString("#,##0.00") + ", "; // Format as currency
+            }
+            reader.Close();
+            return prices.TrimEnd(',', ' '); // Remove trailing comma and space
+        }
+
+        private void G2TBut_Home_Click(object sender, EventArgs e)
+        {
+            Customer customer = new Customer();
+            customer.Show();
+            this.Hide();
+        }
+
+        private void G2TButt_ViewCart_Click(object sender, EventArgs e)
+        {
+            Cart cart = new Cart();
+            cart.Show();
+            this.Hide();
+
+        }
+
+        private void G2TButton_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

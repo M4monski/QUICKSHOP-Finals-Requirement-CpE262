@@ -33,7 +33,6 @@
             But_Exit = new Button();
             But_Admin = new Button();
             button1 = new Button();
-            button2 = new Button();
             SuspendLayout();
             // 
             // Label_Welcome
@@ -88,21 +87,6 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += But_Customer_Click;
             // 
-            // button2
-            // 
-            button2.BackColor = Color.White;
-            button2.BackgroundImage = Properties.Resources.Customer;
-            button2.BackgroundImageLayout = ImageLayout.Zoom;
-            button2.Font = new Font("Inter SemiBold", 22.2F, FontStyle.Bold);
-            button2.Location = new Point(502, 438);
-            button2.Name = "button2";
-            button2.Size = new Size(81, 51);
-            button2.TabIndex = 6;
-            button2.Text = "Customer";
-            button2.TextAlign = ContentAlignment.BottomCenter;
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
-            // 
             // MainUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -111,7 +95,6 @@
             BackgroundImage = Properties.Resources._1;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(931, 520);
-            Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(But_Admin);
             Controls.Add(But_Exit);
@@ -132,6 +115,5 @@
         private Button But_Exit;
         private Button But_Admin;
         private Button button1;
-        private Button button2;
     }
 }

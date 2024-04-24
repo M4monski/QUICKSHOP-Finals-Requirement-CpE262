@@ -59,7 +59,7 @@
             ProductQuantity = new DataGridViewTextBoxColumn();
             ProductPrice = new DataGridViewTextBoxColumn();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            G2TBut_Shop = new Guna.UI2.WinForms.Guna2TileButton();
+            G2TBut_Home = new Guna.UI2.WinForms.Guna2TileButton();
             guna2TileButton1 = new Guna.UI2.WinForms.Guna2TileButton();
             G2TButton_Exit = new Guna.UI2.WinForms.Guna2TileButton();
             LBL_QS = new Label();
@@ -181,7 +181,7 @@
             // guna2Panel1
             // 
             guna2Panel1.BackColor = Color.White;
-            guna2Panel1.Controls.Add(G2TBut_Shop);
+            guna2Panel1.Controls.Add(G2TBut_Home);
             guna2Panel1.Controls.Add(guna2TileButton1);
             guna2Panel1.Controls.Add(G2TButton_Exit);
             guna2Panel1.CustomizableEdges = customizableEdges9;
@@ -192,25 +192,24 @@
             guna2Panel1.Size = new Size(106, 600);
             guna2Panel1.TabIndex = 12;
             // 
-            // G2TBut_Shop
+            // G2TBut_Home
             // 
-            G2TBut_Shop.CustomizableEdges = customizableEdges3;
-            G2TBut_Shop.DisabledState.BorderColor = Color.DarkGray;
-            G2TBut_Shop.DisabledState.CustomBorderColor = Color.DarkGray;
-            G2TBut_Shop.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            G2TBut_Shop.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            G2TBut_Shop.FillColor = Color.White;
-            G2TBut_Shop.Font = new Font("Inter", 9F);
-            G2TBut_Shop.ForeColor = Color.Black;
-            G2TBut_Shop.Image = (Image)resources.GetObject("G2TBut_Shop.Image");
-            G2TBut_Shop.ImageSize = new Size(30, 30);
-            G2TBut_Shop.Location = new Point(3, 90);
-            G2TBut_Shop.Name = "G2TBut_Shop";
-            G2TBut_Shop.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            G2TBut_Shop.Size = new Size(100, 72);
-            G2TBut_Shop.TabIndex = 2;
-            G2TBut_Shop.Text = "Browse Products";
-            G2TBut_Shop.Click += G2TBut_Shop_Click;
+            G2TBut_Home.CustomizableEdges = customizableEdges3;
+            G2TBut_Home.DisabledState.BorderColor = Color.DarkGray;
+            G2TBut_Home.DisabledState.CustomBorderColor = Color.DarkGray;
+            G2TBut_Home.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            G2TBut_Home.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            G2TBut_Home.FillColor = Color.White;
+            G2TBut_Home.Font = new Font("Inter", 9F);
+            G2TBut_Home.ForeColor = Color.Black;
+            G2TBut_Home.Image = (Image)resources.GetObject("G2TBut_Home.Image");
+            G2TBut_Home.Location = new Point(12, 90);
+            G2TBut_Home.Name = "G2TBut_Home";
+            G2TBut_Home.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            G2TBut_Home.Size = new Size(80, 72);
+            G2TBut_Home.TabIndex = 3;
+            G2TBut_Home.Text = "Home";
+            G2TBut_Home.Click += G2TBut_Home_Click;
             // 
             // guna2TileButton1
             // 
@@ -415,7 +414,6 @@
         private Guna.UI2.WinForms.Guna2Button G2But_Checkout;
         private Guna.UI2.WinForms.Guna2DataGridView G2DGV_Products;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2TileButton G2TBut_Shop;
         private Guna.UI2.WinForms.Guna2TileButton guna2TileButton1;
         private Guna.UI2.WinForms.Guna2TileButton G2TButton_Exit;
         private Label LBL_QS;
@@ -429,5 +427,6 @@
         private Guna.UI2.WinForms.Guna2TileButton G2TBut_Add;
         private Guna.UI2.WinForms.Guna2TextBox G2TBox_Quantity;
         private Guna.UI2.WinForms.Guna2Button G2But_RemoveCart;
+        private Guna.UI2.WinForms.Guna2TileButton G2TBut_Home;
     }
 }

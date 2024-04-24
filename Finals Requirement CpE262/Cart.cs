@@ -30,7 +30,7 @@ namespace Finals_Requirement_CpE262
             //G2TBut_CartLogo.BackColor = Color.Transparent;
         }
 
-        private void G2TBut_Shop_Click(object sender, EventArgs e)
+        private void G2TBut_Home_Click(object sender, EventArgs e)
         {
             Customer customer = new Customer();
             this.Hide();

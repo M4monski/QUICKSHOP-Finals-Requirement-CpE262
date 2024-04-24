@@ -38,6 +38,7 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             But_Back = new Button();
             But_LoadSales = new Button();
             G2DGV_SalesHistory = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -50,6 +51,13 @@
             G2Cbox_Week = new Guna.UI2.WinForms.Guna2ComboBox();
             G2CRB_SalesToday = new Guna.UI2.WinForms.Guna2CustomRadioButton();
             label5 = new Label();
+            But_GenerateSalesReport = new Button();
+            Lbl_DataGrossSales = new Label();
+            Lbl_GrossSales = new Label();
+            But_DeleteSalesRecord = new Button();
+            label7 = new Label();
+            G2CRB_LifetimeSales = new Guna.UI2.WinForms.Guna2CustomRadioButton();
+            But_ClearSearchFilters = new Button();
             ((System.ComponentModel.ISupportInitialize)G2DGV_SalesHistory).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +65,7 @@
             // 
             But_Back.Location = new Point(796, 435);
             But_Back.Name = "But_Back";
-            But_Back.Size = new Size(123, 69);
+            But_Back.Size = new Size(123, 74);
             But_Back.TabIndex = 28;
             But_Back.Text = "Back";
             But_Back.UseVisualStyleBackColor = true;
@@ -67,7 +75,7 @@
             // 
             But_LoadSales.Location = new Point(454, 435);
             But_LoadSales.Name = "But_LoadSales";
-            But_LoadSales.Size = new Size(140, 73);
+            But_LoadSales.Size = new Size(108, 73);
             But_LoadSales.TabIndex = 29;
             But_LoadSales.Text = "Load Sales History";
             But_LoadSales.UseVisualStyleBackColor = true;
@@ -213,7 +221,7 @@
             G2Cbox_Week.Font = new Font("Segoe UI", 10F);
             G2Cbox_Week.ForeColor = Color.Black;
             G2Cbox_Week.ItemHeight = 30;
-            G2Cbox_Week.Items.AddRange(new object[] { "1st week (1-7)", "2nd week (8-16)", "3rd week (17-24)", "4th week (25-31)" });
+            G2Cbox_Week.Items.AddRange(new object[] { "1st (1-7)", "2nd (8-16)", "3rd (17-24)", "4th (25-31)" });
             G2Cbox_Week.Location = new Point(276, 435);
             G2Cbox_Week.Name = "G2Cbox_Week";
             G2Cbox_Week.ShadowDecoration.CustomizableEdges = customizableEdges6;
@@ -247,6 +255,83 @@
             label5.TabIndex = 40;
             label5.Text = "Today";
             // 
+            // But_GenerateSalesReport
+            // 
+            But_GenerateSalesReport.Location = new Point(682, 436);
+            But_GenerateSalesReport.Name = "But_GenerateSalesReport";
+            But_GenerateSalesReport.Size = new Size(108, 73);
+            But_GenerateSalesReport.TabIndex = 43;
+            But_GenerateSalesReport.Text = "Generate Sales Report";
+            But_GenerateSalesReport.UseVisualStyleBackColor = true;
+            But_GenerateSalesReport.Click += But_GenerateSalesReport_Click;
+            // 
+            // Lbl_DataGrossSales
+            // 
+            Lbl_DataGrossSales.AutoSize = true;
+            Lbl_DataGrossSales.Font = new Font("Inter", 12F);
+            Lbl_DataGrossSales.Location = new Point(768, 372);
+            Lbl_DataGrossSales.Name = "Lbl_DataGrossSales";
+            Lbl_DataGrossSales.Size = new Size(22, 24);
+            Lbl_DataGrossSales.TabIndex = 45;
+            Lbl_DataGrossSales.Text = "  ";
+            // 
+            // Lbl_GrossSales
+            // 
+            Lbl_GrossSales.AutoSize = true;
+            Lbl_GrossSales.Font = new Font("Inter", 12F);
+            Lbl_GrossSales.Location = new Point(635, 372);
+            Lbl_GrossSales.Name = "Lbl_GrossSales";
+            Lbl_GrossSales.Size = new Size(127, 24);
+            Lbl_GrossSales.TabIndex = 44;
+            Lbl_GrossSales.Text = "Gross Sales:";
+            // 
+            // But_DeleteSalesRecord
+            // 
+            But_DeleteSalesRecord.Location = new Point(568, 436);
+            But_DeleteSalesRecord.Name = "But_DeleteSalesRecord";
+            But_DeleteSalesRecord.Size = new Size(108, 73);
+            But_DeleteSalesRecord.TabIndex = 46;
+            But_DeleteSalesRecord.Text = "Delete Sales Record";
+            But_DeleteSalesRecord.UseVisualStyleBackColor = true;
+            But_DeleteSalesRecord.Click += But_DeleteSalesRecord_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Inter", 12F);
+            label7.Location = new Point(135, 484);
+            label7.Name = "label7";
+            label7.Size = new Size(86, 24);
+            label7.TabIndex = 48;
+            label7.Text = "Lifetime";
+            // 
+            // G2CRB_LifetimeSales
+            // 
+            G2CRB_LifetimeSales.CheckedState.BorderColor = Color.FromArgb(94, 148, 255);
+            G2CRB_LifetimeSales.CheckedState.BorderThickness = 0;
+            G2CRB_LifetimeSales.CheckedState.FillColor = Color.FromArgb(94, 148, 255);
+            G2CRB_LifetimeSales.CheckedState.InnerColor = Color.White;
+            G2CRB_LifetimeSales.Location = new Point(227, 484);
+            G2CRB_LifetimeSales.Name = "G2CRB_LifetimeSales";
+            G2CRB_LifetimeSales.ShadowDecoration.CustomizableEdges = customizableEdges8;
+            G2CRB_LifetimeSales.Size = new Size(25, 25);
+            G2CRB_LifetimeSales.TabIndex = 47;
+            G2CRB_LifetimeSales.Text = "G2CRB_LifetimeSales";
+            G2CRB_LifetimeSales.UncheckedState.BorderColor = Color.FromArgb(125, 137, 149);
+            G2CRB_LifetimeSales.UncheckedState.BorderThickness = 2;
+            G2CRB_LifetimeSales.UncheckedState.FillColor = Color.Transparent;
+            G2CRB_LifetimeSales.UncheckedState.InnerColor = Color.Transparent;
+            // 
+            // But_ClearSearchFilters
+            // 
+            But_ClearSearchFilters.Location = new Point(276, 474);
+            But_ClearSearchFilters.Name = "But_ClearSearchFilters";
+            But_ClearSearchFilters.Size = new Size(172, 34);
+            But_ClearSearchFilters.TabIndex = 49;
+            But_ClearSearchFilters.Text = "Clear Search Filters";
+            But_ClearSearchFilters.UseVisualStyleBackColor = true;
+            But_ClearSearchFilters.Click += But_ClearSearchFilters_Click;
+            // 
             // SalesHistory
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -254,6 +339,13 @@
             BackgroundImage = Properties.Resources._2;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(931, 520);
+            Controls.Add(But_ClearSearchFilters);
+            Controls.Add(label7);
+            Controls.Add(G2CRB_LifetimeSales);
+            Controls.Add(But_DeleteSalesRecord);
+            Controls.Add(Lbl_DataGrossSales);
+            Controls.Add(Lbl_GrossSales);
+            Controls.Add(But_GenerateSalesReport);
             Controls.Add(label5);
             Controls.Add(G2CRB_SalesToday);
             Controls.Add(label4);
@@ -270,6 +362,7 @@
             Name = "SalesHistory";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Sales History";
+            Load += SalesHistory_Load;
             ((System.ComponentModel.ISupportInitialize)G2DGV_SalesHistory).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -289,5 +382,12 @@
         private Guna.UI2.WinForms.Guna2ComboBox G2Cbox_Week;
         private Guna.UI2.WinForms.Guna2CustomRadioButton G2CRB_SalesToday;
         private Label label5;
+        private Button But_GenerateSalesReport;
+        private Label Lbl_DataGrossSales;
+        private Label Lbl_GrossSales;
+        private Button But_DeleteSalesRecord;
+        private Label label7;
+        private Guna.UI2.WinForms.Guna2CustomRadioButton G2CRB_LifetimeSales;
+        private Button But_ClearSearchFilters;
     }
 }
