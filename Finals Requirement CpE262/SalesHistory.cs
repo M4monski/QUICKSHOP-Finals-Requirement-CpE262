@@ -24,6 +24,14 @@ namespace Finals_Requirement_CpE262
             label5.BackColor = Color.Transparent;
         }
 
+        public Admin Admin
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private void But_LoadSales_Click(object sender, EventArgs e)
         {
             if (G2CRB_SalesToday.Checked)

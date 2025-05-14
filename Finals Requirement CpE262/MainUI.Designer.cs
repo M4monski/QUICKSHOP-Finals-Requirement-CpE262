@@ -32,7 +32,7 @@
             Label_Welcome = new Label();
             But_Exit = new Button();
             But_Admin = new Button();
-            button1 = new Button();
+            But_Customer = new Button();
             SuspendLayout();
             // 
             // Label_Welcome
@@ -72,20 +72,20 @@
             But_Admin.UseVisualStyleBackColor = false;
             But_Admin.Click += But_Admin_Click;
             // 
-            // button1
+            // But_Customer
             // 
-            button1.BackColor = Color.White;
-            button1.BackgroundImage = Properties.Resources.Customer;
-            button1.BackgroundImageLayout = ImageLayout.Zoom;
-            button1.Font = new Font("Inter SemiBold", 22.2F, FontStyle.Bold);
-            button1.Location = new Point(67, 83);
-            button1.Name = "button1";
-            button1.Size = new Size(371, 346);
-            button1.TabIndex = 5;
-            button1.Text = "Customer";
-            button1.TextAlign = ContentAlignment.BottomCenter;
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += But_Customer_Click;
+            But_Customer.BackColor = Color.White;
+            But_Customer.BackgroundImage = Properties.Resources.Customer;
+            But_Customer.BackgroundImageLayout = ImageLayout.Zoom;
+            But_Customer.Font = new Font("Inter SemiBold", 22.2F, FontStyle.Bold);
+            But_Customer.Location = new Point(67, 83);
+            But_Customer.Name = "But_Customer";
+            But_Customer.Size = new Size(371, 346);
+            But_Customer.TabIndex = 5;
+            But_Customer.Text = "Customer";
+            But_Customer.TextAlign = ContentAlignment.BottomCenter;
+            But_Customer.UseVisualStyleBackColor = false;
+            But_Customer.Click += But_Customer_Click;
             // 
             // MainUI
             // 
@@ -95,7 +95,7 @@
             BackgroundImage = Properties.Resources._1;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(931, 520);
-            Controls.Add(button1);
+            Controls.Add(But_Customer);
             Controls.Add(But_Admin);
             Controls.Add(But_Exit);
             Controls.Add(Label_Welcome);
@@ -114,6 +114,6 @@
         private Label Label_Welcome;
         private Button But_Exit;
         private Button But_Admin;
-        private Button button1;
+        private Button But_Customer;
     }
 }

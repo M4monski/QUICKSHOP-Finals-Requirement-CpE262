@@ -19,6 +19,14 @@ namespace Finals_Requirement_CpE262
             InitializeComponent();
         }
 
+        public ManageProducts ManageProducts
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private void But_LoadProducts_Click(object sender, EventArgs e)
         {
             try

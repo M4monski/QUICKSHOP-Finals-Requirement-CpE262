@@ -110,5 +110,15 @@ namespace Finals_Requirement_CpE262
             LBL_FPASSPIN.BackColor = Color.Transparent;
             LBL_FPASSUSER.BackColor = Color.Transparent;
         }
+
+        private void G2But_ViewPass_Click(object sender, EventArgs e)
+        {
+            Tbox_FPASSPASS.UseSystemPasswordChar = !Tbox_FPASSPASS.UseSystemPasswordChar;
+        }
+
+        private void G2But_ViewPin_Click(object sender, EventArgs e)
+        {
+            Tbox_FPASSPIN.UseSystemPasswordChar = !Tbox_FPASSPIN.UseSystemPasswordChar;
+        }
     }
 }

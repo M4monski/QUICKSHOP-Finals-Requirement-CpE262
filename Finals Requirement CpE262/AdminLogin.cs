@@ -81,15 +81,12 @@ namespace Finals_Requirement_CpE262
                 MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
         private void But_ReturnLogin_Click(object sender, EventArgs e)
         {
             MainUI main = new MainUI();
             main.Show();
             this.Hide();
         }
-
         private void AdminLogin_Load(object sender, EventArgs e)
         {
             LBL_LOGIN.BackColor = Color.Transparent;
@@ -97,6 +94,10 @@ namespace Finals_Requirement_CpE262
             LBL_USERNAME.BackColor = Color.Transparent;
             LBL_PASSWORD.BackColor = Color.Transparent;
             LLBL_AdminFPass.BackColor = Color.Transparent;
+        }
+        private void G2But_ViewPass_Click(object sender, EventArgs e)
+        {
+            Tbox_AdminPass.UseSystemPasswordChar = !Tbox_AdminPass.UseSystemPasswordChar;
         }
     }
 }

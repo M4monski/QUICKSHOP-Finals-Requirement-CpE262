@@ -18,6 +18,14 @@ namespace Finals_Requirement_CpE262
             InitializeComponent();
         }
 
+        public ManageAccounts ManageAccounts
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private void But_AddBack_Click(object sender, EventArgs e)
         {
             ManageAccounts manage = new ManageAccounts();
@@ -51,7 +59,6 @@ namespace Finals_Requirement_CpE262
                         }
                     }
 
-                    // Insert the new admin account into the database
                     string insertQuery = "INSERT INTO LOGIN_INFO (Username, Password, SECURITYPIN) VALUES (@Username, @Password, @Pin)";
                     using (SqlCommand insertCommand = new SqlCommand(insertQuery, conn))
                     {
@@ -81,5 +88,14 @@ namespace Finals_Requirement_CpE262
             }
         }
 
+        private void G2But_ViewPass_Click(object sender, EventArgs e)
+        {
+            Tbox_AddPass.UseSystemPasswordChar = !Tbox_AddPass.UseSystemPasswordChar;
+        }
+
+        private void G2But_ViewPin_Click(object sender, EventArgs e)
+        {
+            Tbox_AddPIN.UseSystemPasswordChar = !Tbox_AddPIN.UseSystemPasswordChar;
+        }
     }
 }

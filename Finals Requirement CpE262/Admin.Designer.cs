@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Label_ADash = new Label();
             But_ManageProducts = new Button();
             But_ManageAcc = new Button();
@@ -37,6 +39,7 @@
             But_DelProd = new Button();
             But_AdminExit = new Button();
             But_Back = new Button();
+            G2But_CashierPOS = new Guna.UI2.WinForms.Guna2Button();
             SuspendLayout();
             // 
             // Label_ADash
@@ -58,7 +61,7 @@
             But_ManageProducts.Font = new Font("Inter", 15F);
             But_ManageProducts.Location = new Point(277, 92);
             But_ManageProducts.Name = "But_ManageProducts";
-            But_ManageProducts.Size = new Size(382, 328);
+            But_ManageProducts.Size = new Size(382, 212);
             But_ManageProducts.TabIndex = 4;
             But_ManageProducts.Text = "Manage Products";
             But_ManageProducts.TextAlign = ContentAlignment.BottomCenter;
@@ -149,6 +152,28 @@
             But_Back.UseVisualStyleBackColor = false;
             But_Back.Click += But_Back_Click;
             // 
+            // G2But_CashierPOS
+            // 
+            G2But_CashierPOS.CustomBorderColor = Color.Silver;
+            G2But_CashierPOS.CustomBorderThickness = new Padding(1);
+            G2But_CashierPOS.CustomizableEdges = customizableEdges1;
+            G2But_CashierPOS.DisabledState.BorderColor = Color.DarkGray;
+            G2But_CashierPOS.DisabledState.CustomBorderColor = Color.DarkGray;
+            G2But_CashierPOS.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            G2But_CashierPOS.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            G2But_CashierPOS.FillColor = Color.White;
+            G2But_CashierPOS.Font = new Font("Inter", 15F);
+            G2But_CashierPOS.ForeColor = Color.Black;
+            G2But_CashierPOS.Image = (Image)resources.GetObject("G2But_CashierPOS.Image");
+            G2But_CashierPOS.ImageSize = new Size(75, 75);
+            G2But_CashierPOS.Location = new Point(277, 326);
+            G2But_CashierPOS.Name = "G2But_CashierPOS";
+            G2But_CashierPOS.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            G2But_CashierPOS.Size = new Size(382, 94);
+            G2But_CashierPOS.TabIndex = 11;
+            G2But_CashierPOS.Text = "CASHIER POS";
+            G2But_CashierPOS.Click += G2But_CashierPOS_Click;
+            // 
             // Admin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -156,6 +181,7 @@
             BackColor = Color.PaleTurquoise;
             BackgroundImage = Properties.Resources._2;
             ClientSize = new Size(931, 520);
+            Controls.Add(G2But_CashierPOS);
             Controls.Add(But_Back);
             Controls.Add(But_AdminExit);
             Controls.Add(But_ManageAcc);
@@ -182,5 +208,6 @@
         private Button But_DelProd;
         private Button But_AdminExit;
         private Button But_Back;
+        private Guna.UI2.WinForms.Guna2Button G2But_CashierPOS;
     }
 }

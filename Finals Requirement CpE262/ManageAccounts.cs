@@ -17,6 +17,30 @@ namespace Finals_Requirement_CpE262
             InitializeComponent();
         }
 
+        public Admin Admin
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public AddAdmin AddAdmin
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public DisplayAdmins DisplayAdmins
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private void ManageAccounts_Load(object sender, EventArgs e)
         {
             LBL_ADMINACC.BackColor = Color.Transparent;

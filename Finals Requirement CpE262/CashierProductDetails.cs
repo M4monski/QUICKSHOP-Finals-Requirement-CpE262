@@ -5,24 +5,23 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Media;
 
 namespace Finals_Requirement_CpE262
 {
-    public partial class ProductDetails : Form
+    public partial class CashierProductDetails : Form
     {
         public string ProductName { get; set; }
         public decimal ProductPrice { get; set; }
         public int ProductQuantity { get; set; }
 
-        public ProductDetails()
+        public CashierProductDetails()
         {
             InitializeComponent();
         }
+
         public void SetProductDetails(string name, decimal price, int quantity)
         {
             ProductName = name;
@@ -32,11 +31,11 @@ namespace Finals_Requirement_CpE262
 
         private void G2But_Back_Click(object sender, EventArgs e)
         {
-            Customer test = new Customer();
+            CashierShop test = new CashierShop();
             this.Hide();
             test.Show();
         }
-        private void ProductDetails_Load(object sender, EventArgs e)
+        private void CashierProductDetails_Load(object sender, EventArgs e)
         {
             Lbl_TName.Text = ProductName;
             Lbl_TPrice.Text = ProductPrice.ToString("₱#,##0.00");

@@ -12,11 +12,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Finals_Requirement_CpE262
 {
-    public partial class Customer : Form
+    public partial class CashierShop : Form
     {
         int ctr = 0;
         int temp = 0;
-        public Customer()
+        public CashierShop()
         {
             InitializeComponent();
         }
@@ -26,9 +26,9 @@ namespace Finals_Requirement_CpE262
 
         }
 
-        private Panel currentlySelectedPanel; // Keep track of the currently selected panel
+        private Panel currentlySelectedPanel;
 
-        private void CustomerTEST_Load(object sender, EventArgs e)
+        private void CashierShop_Load(object sender, EventArgs e)
         {
             LBL_Browse.BackColor = Color.Transparent;
             refresh();
@@ -60,7 +60,7 @@ namespace Finals_Requirement_CpE262
 
         private void G2TBut_SHOWMAIN_Click(object sender, EventArgs e)
         {
-            MainUI main = new MainUI();
+            Admin main = new Admin();
             this.Hide();
             main.Show();
         }
@@ -106,7 +106,7 @@ namespace Finals_Requirement_CpE262
                     int productQuantity = int.Parse(quantityLabel.Text.Replace("In Stock: ", ""));
 
                     // Create an instance of ProductDetails form
-                    ProductDetails deets = new ProductDetails();
+                    CashierProductDetails deets = new CashierProductDetails();
 
                     // Pass the product details to the ProductDetails form
                     deets.SetProductDetails(productName, productPrice, productQuantity);
@@ -350,7 +350,7 @@ namespace Finals_Requirement_CpE262
                                     conn.Open();
 
                                     // Check if the product already exists in the Cart table
-                                    string checkQuery = "SELECT ProductQuantity FROM Cart WHERE ProductName = @ProductName";
+                                    string checkQuery = "SELECT ProductQuantity FROM CashierCart WHERE ProductName = @ProductName";
                                     using (SqlCommand checkCommand = new SqlCommand(checkQuery, conn))
                                     {
                                         checkCommand.Parameters.AddWithValue("@ProductName", productName);
@@ -362,7 +362,7 @@ namespace Finals_Requirement_CpE262
                                             int currentQuantity = (int)existingQuantity;
                                             int newQuantity = currentQuantity + quantityToAdd;
 
-                                            string updateQuery = "UPDATE Cart SET ProductQuantity = @NewQuantity WHERE ProductName = @ProductName";
+                                            string updateQuery = "UPDATE CashierCart SET ProductQuantity = @NewQuantity WHERE ProductName = @ProductName";
                                             using (SqlCommand updateCommand = new SqlCommand(updateQuery, conn))
                                             {
                                                 updateCommand.Parameters.AddWithValue("@NewQuantity", newQuantity);
@@ -373,7 +373,7 @@ namespace Finals_Requirement_CpE262
                                         else
                                         {
                                             // Product doesn't exist in the cart, insert a new record
-                                            string insertQuery = "INSERT INTO Cart (ProductName, ProductPrice, ProductQuantity, ImageLogo) VALUES (@ProductName, @ProductPrice, @ProductQuantity, @ImageLogo)";
+                                            string insertQuery = "INSERT INTO CashierCart (ProductName, ProductPrice, ProductQuantity, ImageLogo) VALUES (@ProductName, @ProductPrice, @ProductQuantity, @ImageLogo)";
                                             using (SqlCommand insertCommand = new SqlCommand(insertQuery, conn))
                                             {
                                                 insertCommand.Parameters.AddWithValue("@ProductName", productName);
@@ -426,7 +426,7 @@ namespace Finals_Requirement_CpE262
 
         private void G2TButt_ViewCart_Click(object sender, EventArgs e)
         {
-            Cart cart = new Cart();
+            CashierCart cart = new CashierCart();
             this.Hide();
             cart.Show();
         }
@@ -485,7 +485,7 @@ namespace Finals_Requirement_CpE262
                         if (row["ProductQuantity"].ToString() == "0")
                         {
                             quantityLabel.Text = "OUT OF STOCK";
-                        }   
+                        }
                         else
                         {
                             quantityLabel.Text = "In Stock: " + row["ProductQuantity"].ToString();
@@ -515,28 +515,5 @@ namespace Finals_Requirement_CpE262
 
         }
 
-        public ProductDetails ProductDetails
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public Cart Cart
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public MainUI MainUI
-        {
-            get => default;
-            set
-            {
-            }
-        }
     }
 }

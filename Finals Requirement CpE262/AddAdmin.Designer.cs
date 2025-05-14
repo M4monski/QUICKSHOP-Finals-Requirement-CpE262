@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddAdmin));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             But_AddBack = new Button();
             But_AddAccount = new Button();
             Tbox_AddPIN = new TextBox();
@@ -39,6 +43,8 @@
             LBL_FPASSUSER = new Label();
             LBL_FPASS = new Label();
             pictureBox1 = new PictureBox();
+            G2But_ViewPass = new Guna.UI2.WinForms.Guna2Button();
+            G2But_ViewPin = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -136,6 +142,50 @@
             pictureBox1.TabIndex = 15;
             pictureBox1.TabStop = false;
             // 
+            // G2But_ViewPass
+            // 
+            G2But_ViewPass.BorderColor = Color.Silver;
+            G2But_ViewPass.BorderThickness = 1;
+            G2But_ViewPass.CustomizableEdges = customizableEdges1;
+            G2But_ViewPass.DisabledState.BorderColor = Color.DarkGray;
+            G2But_ViewPass.DisabledState.CustomBorderColor = Color.DarkGray;
+            G2But_ViewPass.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            G2But_ViewPass.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            G2But_ViewPass.FillColor = Color.White;
+            G2But_ViewPass.Font = new Font("Segoe UI", 9F);
+            G2But_ViewPass.ForeColor = Color.White;
+            G2But_ViewPass.Image = (Image)resources.GetObject("G2But_ViewPass.Image");
+            G2But_ViewPass.ImageOffset = new Point(0, 12);
+            G2But_ViewPass.Location = new Point(288, 280);
+            G2But_ViewPass.Name = "G2But_ViewPass";
+            G2But_ViewPass.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            G2But_ViewPass.Size = new Size(28, 27);
+            G2But_ViewPass.TabIndex = 25;
+            G2But_ViewPass.Text = "guna2Button1";
+            G2But_ViewPass.Click += G2But_ViewPass_Click;
+            // 
+            // G2But_ViewPin
+            // 
+            G2But_ViewPin.BorderColor = Color.Silver;
+            G2But_ViewPin.BorderThickness = 1;
+            G2But_ViewPin.CustomizableEdges = customizableEdges3;
+            G2But_ViewPin.DisabledState.BorderColor = Color.DarkGray;
+            G2But_ViewPin.DisabledState.CustomBorderColor = Color.DarkGray;
+            G2But_ViewPin.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            G2But_ViewPin.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            G2But_ViewPin.FillColor = Color.White;
+            G2But_ViewPin.Font = new Font("Segoe UI", 9F);
+            G2But_ViewPin.ForeColor = Color.White;
+            G2But_ViewPin.Image = (Image)resources.GetObject("G2But_ViewPin.Image");
+            G2But_ViewPin.ImageOffset = new Point(0, 12);
+            G2But_ViewPin.Location = new Point(288, 345);
+            G2But_ViewPin.Name = "G2But_ViewPin";
+            G2But_ViewPin.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            G2But_ViewPin.Size = new Size(28, 27);
+            G2But_ViewPin.TabIndex = 26;
+            G2But_ViewPin.Text = "guna2Button1";
+            G2But_ViewPin.Click += G2But_ViewPin_Click;
+            // 
             // AddAdmin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -143,6 +193,8 @@
             BackgroundImage = Properties.Resources._2;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(396, 506);
+            Controls.Add(G2But_ViewPin);
+            Controls.Add(G2But_ViewPass);
             Controls.Add(But_AddBack);
             Controls.Add(But_AddAccount);
             Controls.Add(Tbox_AddPIN);
@@ -175,5 +227,7 @@
         private Label LBL_FPASSUSER;
         private Label LBL_FPASS;
         private PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2Button G2But_ViewPass;
+        private Guna.UI2.WinForms.Guna2Button G2But_ViewPin;
     }
 }

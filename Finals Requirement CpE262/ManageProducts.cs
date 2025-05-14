@@ -198,7 +198,5 @@ namespace Finals_Requirement_CpE262
             // Clear the image data list after saving the product
             imageDataList.Clear();
         }
-
-
     }
 }

@@ -164,7 +164,7 @@ namespace Finals_Requirement_CpE262
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: Please fillup the needed product information." /*+ ex.Message*/, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             // Clear the image data list after saving the product
@@ -176,6 +176,27 @@ namespace Finals_Requirement_CpE262
             Products_Preview prod = new Products_Preview();
             this.Hide();
             prod.Show();
+        }
+
+        private void AddProduct_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public Products_Preview Products_Preview
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public ManageProducts ManageProducts
+        {
+            get => default;
+            set
+            {
+            }
         }
     }
 }

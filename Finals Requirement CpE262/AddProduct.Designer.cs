@@ -28,15 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             G2DGV_Products = new Guna.UI2.WinForms.Guna2DataGridView();
             label1 = new Label();
             label2 = new Label();
@@ -57,27 +57,27 @@
             // 
             // G2DGV_Products
             // 
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(254, 248, 196);
-            G2DGV_Products.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.BackColor = Color.FromArgb(254, 248, 196);
+            G2DGV_Products.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             G2DGV_Products.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = Color.FromArgb(254, 192, 7);
-            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle2.ForeColor = Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            G2DGV_Products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = Color.FromArgb(254, 192, 7);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle5.ForeColor = Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
+            G2DGV_Products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             G2DGV_Products.ColumnHeadersHeight = 40;
             G2DGV_Products.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = Color.FromArgb(254, 250, 215);
-            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F);
-            dataGridViewCellStyle3.ForeColor = Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(254, 213, 89);
-            dataGridViewCellStyle3.SelectionForeColor = Color.Black;
-            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
-            G2DGV_Products.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = Color.FromArgb(254, 250, 215);
+            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle6.ForeColor = Color.Black;
+            dataGridViewCellStyle6.SelectionBackColor = Color.FromArgb(254, 213, 89);
+            dataGridViewCellStyle6.SelectionForeColor = Color.Black;
+            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
+            G2DGV_Products.DefaultCellStyle = dataGridViewCellStyle6;
             G2DGV_Products.GridColor = Color.FromArgb(254, 235, 177);
             G2DGV_Products.Location = new Point(398, 9);
             G2DGV_Products.Name = "G2DGV_Products";
@@ -131,7 +131,7 @@
             // 
             // G2Tbox_ProdName
             // 
-            G2Tbox_ProdName.CustomizableEdges = customizableEdges1;
+            G2Tbox_ProdName.CustomizableEdges = customizableEdges7;
             G2Tbox_ProdName.DefaultText = "";
             G2Tbox_ProdName.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             G2Tbox_ProdName.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -147,7 +147,7 @@
             G2Tbox_ProdName.PasswordChar = '\0';
             G2Tbox_ProdName.PlaceholderText = "";
             G2Tbox_ProdName.SelectedText = "";
-            G2Tbox_ProdName.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            G2Tbox_ProdName.ShadowDecoration.CustomizableEdges = customizableEdges8;
             G2Tbox_ProdName.Size = new Size(347, 32);
             G2Tbox_ProdName.TabIndex = 3;
             // 
@@ -163,7 +163,7 @@
             // 
             // G2Tbox_ProdPrice
             // 
-            G2Tbox_ProdPrice.CustomizableEdges = customizableEdges3;
+            G2Tbox_ProdPrice.CustomizableEdges = customizableEdges9;
             G2Tbox_ProdPrice.DefaultText = "";
             G2Tbox_ProdPrice.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             G2Tbox_ProdPrice.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -179,7 +179,7 @@
             G2Tbox_ProdPrice.PasswordChar = '\0';
             G2Tbox_ProdPrice.PlaceholderText = "";
             G2Tbox_ProdPrice.SelectedText = "";
-            G2Tbox_ProdPrice.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            G2Tbox_ProdPrice.ShadowDecoration.CustomizableEdges = customizableEdges10;
             G2Tbox_ProdPrice.Size = new Size(350, 32);
             G2Tbox_ProdPrice.TabIndex = 7;
             // 
@@ -195,7 +195,7 @@
             // 
             // G2Tbox_ProdQuant
             // 
-            G2Tbox_ProdQuant.CustomizableEdges = customizableEdges5;
+            G2Tbox_ProdQuant.CustomizableEdges = customizableEdges11;
             G2Tbox_ProdQuant.DefaultText = "";
             G2Tbox_ProdQuant.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
             G2Tbox_ProdQuant.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
@@ -211,7 +211,7 @@
             G2Tbox_ProdQuant.PasswordChar = '\0';
             G2Tbox_ProdQuant.PlaceholderText = "";
             G2Tbox_ProdQuant.SelectedText = "";
-            G2Tbox_ProdQuant.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            G2Tbox_ProdQuant.ShadowDecoration.CustomizableEdges = customizableEdges12;
             G2Tbox_ProdQuant.Size = new Size(347, 32);
             G2Tbox_ProdQuant.TabIndex = 9;
             // 
@@ -320,6 +320,7 @@
             Name = "AddProduct";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Product";
+            Load += AddProduct_Load;
             ((System.ComponentModel.ISupportInitialize)G2DGV_Products).EndInit();
             ResumeLayout(false);
             PerformLayout();

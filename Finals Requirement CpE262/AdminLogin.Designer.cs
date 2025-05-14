@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminLogin));
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             LBL_LOGIN = new Label();
             LBL_HELLOADMIN = new Label();
             LBL_USERNAME = new Label();
@@ -38,6 +40,7 @@
             But_AdminLOGIN = new Button();
             LLBL_AdminFPass = new LinkLabel();
             But_ReturnLogin = new Button();
+            G2But_ViewPass = new Guna.UI2.WinForms.Guna2Button();
             SuspendLayout();
             // 
             // LBL_LOGIN
@@ -133,6 +136,28 @@
             But_ReturnLogin.UseVisualStyleBackColor = true;
             But_ReturnLogin.Click += But_ReturnLogin_Click;
             // 
+            // G2But_ViewPass
+            // 
+            G2But_ViewPass.BorderColor = Color.Silver;
+            G2But_ViewPass.BorderThickness = 1;
+            G2But_ViewPass.CustomizableEdges = customizableEdges1;
+            G2But_ViewPass.DisabledState.BorderColor = Color.DarkGray;
+            G2But_ViewPass.DisabledState.CustomBorderColor = Color.DarkGray;
+            G2But_ViewPass.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            G2But_ViewPass.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            G2But_ViewPass.FillColor = Color.White;
+            G2But_ViewPass.Font = new Font("Segoe UI", 9F);
+            G2But_ViewPass.ForeColor = Color.White;
+            G2But_ViewPass.Image = (Image)resources.GetObject("G2But_ViewPass.Image");
+            G2But_ViewPass.ImageOffset = new Point(0, 12);
+            G2But_ViewPass.Location = new Point(357, 316);
+            G2But_ViewPass.Name = "G2But_ViewPass";
+            G2But_ViewPass.ShadowDecoration.CustomizableEdges = customizableEdges2;
+            G2But_ViewPass.Size = new Size(28, 27);
+            G2But_ViewPass.TabIndex = 16;
+            G2But_ViewPass.Text = "guna2Button1";
+            G2But_ViewPass.Click += G2But_ViewPass_Click;
+            // 
             // AdminLogin
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -140,6 +165,7 @@
             BackgroundImage = Properties.Resources._2;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(532, 553);
+            Controls.Add(G2But_ViewPass);
             Controls.Add(But_ReturnLogin);
             Controls.Add(LLBL_AdminFPass);
             Controls.Add(But_AdminLOGIN);
@@ -170,5 +196,6 @@
         private Button But_AdminLOGIN;
         private LinkLabel LLBL_AdminFPass;
         private Button But_ReturnLogin;
+        private Guna.UI2.WinForms.Guna2Button G2But_ViewPass;
     }
 }

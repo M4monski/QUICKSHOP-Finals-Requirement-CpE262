@@ -17,7 +17,6 @@ namespace Finals_Requirement_CpE262
             InitializeComponent();
 
         }
-
         private void Admin_Load(object sender, EventArgs e)
         {
             Label_ADash.BackColor = Color.Transparent;
@@ -73,6 +72,13 @@ namespace Finals_Requirement_CpE262
             ManageProducts manage = new ManageProducts();
             this.Hide();
             manage.Show();
+        }
+
+        private void G2But_CashierPOS_Click(object sender, EventArgs e)
+        {
+            CashierShop cashier = new CashierShop();
+            cashier.Show();
+            this.Hide();    
         }
     }
 }

@@ -18,6 +18,14 @@ namespace Finals_Requirement_CpE262
             InitializeComponent();
         }
 
+        public DisplayAdmins DisplayAdmins
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private void DeleteAdmin_Load(object sender, EventArgs e)
         {
             LBL_DELETEACCOUNT.BackColor = Color.Transparent;

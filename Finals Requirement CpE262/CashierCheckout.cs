@@ -1,12 +1,9 @@
-﻿using Guna.UI2.WinForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Drawing.Imaging;
-using System.Drawing.Printing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -15,32 +12,15 @@ using System.Windows.Forms;
 
 namespace Finals_Requirement_CpE262
 {
-    public partial class Checkout : Form
+    public partial class CashierCheckout : Form
     {
         private static readonly RandomNumberGenerator rng = RandomNumberGenerator.Create();
-
-        public Checkout()
+        public CashierCheckout()
         {
             InitializeComponent();
         }
 
-        public Customer Customer
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public Cart Cart
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        private void Checkout_Load(object sender, EventArgs e)
+        private void CashierCheckout_Load(object sender, EventArgs e)
         {
             label1.BackColor = Color.Transparent;
             label5.BackColor = Color.Transparent;
@@ -187,7 +167,7 @@ namespace Finals_Requirement_CpE262
             string contactInfo = "0927 576 7079 / keithharvey.angel@cit.edu";
             string currentDate = DateTime.Now.ToString();
             string invoiceID = $"Invoice ID: {invoiceNumber}";
-            string customerName = "Customer: " + G2Tbox_CustName.Text.Trim();
+            string customerName = "Cashier: " + G2Tbox_CustName.Text.Trim();
 
 
             // Calculate the width of the longest line to determine the center position
@@ -234,7 +214,7 @@ namespace Finals_Requirement_CpE262
             {
                 using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\CPELOGIN;Initial Catalog=LOGIN;Integrated Security=True"))
                 {
-                    string query = "SELECT ProductName, ProductPrice, ProductQuantity FROM Cart";
+                    string query = "SELECT ProductName, ProductPrice, ProductQuantity FROM CashierCart";
                     SqlCommand command = new SqlCommand(query, conn);
                     conn.Open();
                     SqlDataReader reader = command.ExecuteReader();
@@ -328,7 +308,7 @@ namespace Finals_Requirement_CpE262
             {
                 using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\CPELOGIN;Initial Catalog=LOGIN;Integrated Security=True"))
                 {
-                    string query = "SELECT SUM(ProductPrice * ProductQuantity) AS TotalPrice FROM Cart";
+                    string query = "SELECT SUM(ProductPrice * ProductQuantity) AS TotalPrice FROM CashierCart";
                     SqlCommand command = new SqlCommand(query, conn);
                     conn.Open();
                     object result = command.ExecuteScalar();
@@ -349,7 +329,7 @@ namespace Finals_Requirement_CpE262
         {
             using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\CPELOGIN;Initial Catalog=LOGIN;Integrated Security=True"))
             {
-                string query = "SELECT ImageLogo, ProductName, ProductPrice, ProductQuantity FROM Cart";
+                string query = "SELECT ImageLogo, ProductName, ProductPrice, ProductQuantity FROM CashierCart";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
                 DataTable data = new DataTable();
                 adapter.Fill(data);
@@ -396,7 +376,7 @@ namespace Finals_Requirement_CpE262
             {
                 using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\CPELOGIN;Initial Catalog=LOGIN;Integrated Security=True"))
                 {
-                    string query = "DELETE FROM Cart";
+                    string query = "DELETE FROM CashierCart";
                     SqlCommand command = new SqlCommand(query, conn);
 
                     conn.Open();
@@ -422,8 +402,8 @@ namespace Finals_Requirement_CpE262
                 {
                     conn.Open();
 
-                    string query = @"INSERT INTO SalesHistory (InvoiceNumber, ChosenProducts, Quantity, Price, TotalCost, DateOfSale, CustomerName)
-                     VALUES (@InvoiceNumber, @ChosenProducts, @Quantity, @Price, @TotalCost, @DateOfSale, @CustomerName)";
+                    string query = @"INSERT INTO SalesHistory (InvoiceNumber, ChosenProducts, Quantity, Price, TotalCost, DateOfSale, CashierName)
+                     VALUES (@InvoiceNumber, @ChosenProducts, @Quantity, @Price, @TotalCost, @DateOfSale, @CashierName)";
 
                     SqlCommand command = new SqlCommand(query, conn);
                     command.Parameters.AddWithValue("@InvoiceNumber", GenerateInvoiceNumber());
@@ -432,8 +412,7 @@ namespace Finals_Requirement_CpE262
                     command.Parameters.AddWithValue("@Price", GetProductPrices(conn)); // Fetch prices from Cart table
                     command.Parameters.AddWithValue("@TotalCost", CalculateTotalPrice());
                     command.Parameters.AddWithValue("@DateOfSale", DateTime.Now);
-                    command.Parameters.AddWithValue("@CustomerName", G2Tbox_CustName.Text.Trim());
-                    //command.Parameters.AddWithValue("@CashierName", "YourCashierNameHere"); // You can set the cashier name dynamically
+                    command.Parameters.AddWithValue("@CashierName", G2Tbox_CustName.Text.Trim()); // You can set the cashier name dynamically
 
                     int rowsAffected = command.ExecuteNonQuery();
                     if (rowsAffected <= 0)
@@ -454,7 +433,7 @@ namespace Finals_Requirement_CpE262
             string products = string.Empty;
             try
             {
-                string query = "SELECT ProductName FROM Cart";
+                string query = "SELECT ProductName FROM CashierCart";
                 SqlCommand command = new SqlCommand(query, conn);
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -475,7 +454,7 @@ namespace Finals_Requirement_CpE262
         private string GetProductQuantities(SqlConnection conn)
         {
             string quantities = "";
-            string query = "SELECT ProductQuantity FROM Cart";
+            string query = "SELECT ProductQuantity FROM CashierCart";
             SqlCommand command = new SqlCommand(query, conn);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -489,7 +468,7 @@ namespace Finals_Requirement_CpE262
         private string GetProductPrices(SqlConnection conn)
         {
             string prices = "";
-            string query = "SELECT ProductPrice FROM Cart";
+            string query = "SELECT ProductPrice FROM CashierCart";
             SqlCommand command = new SqlCommand(query, conn);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -502,14 +481,14 @@ namespace Finals_Requirement_CpE262
 
         private void G2TBut_Home_Click(object sender, EventArgs e)
         {
-            Customer customer = new Customer();
-            customer.Show();
+            CashierShop Cashier = new CashierShop();
+            Cashier.Show();
             this.Hide();
         }
 
         private void G2TButt_ViewCart_Click(object sender, EventArgs e)
         {
-            Cart cart = new Cart();
+            CashierCart cart = new CashierCart();
             cart.Show();
             this.Hide();
 

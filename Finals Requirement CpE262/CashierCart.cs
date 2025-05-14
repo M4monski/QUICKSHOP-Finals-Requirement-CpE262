@@ -5,19 +5,18 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Finals_Requirement_CpE262
 {
-    public partial class Cart : Form
+    public partial class CashierCart : Form
     {
         int temp = 0;
         int ctr = 0;
         int indexRow;
-        public Cart()
+        public CashierCart()
         {
             InitializeComponent();
         }
@@ -30,15 +29,7 @@ namespace Finals_Requirement_CpE262
             }
         }
 
-        public Customer Customer
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        private void Cart_Load(object sender, EventArgs e)
+        private void CashierCart_Load(object sender, EventArgs e)
         {
             refresh();
             Lbl_CalcTotal.Text = CalculateTotalPrice().ToString("₱" + "#,##0.00");
@@ -55,7 +46,7 @@ namespace Finals_Requirement_CpE262
             {
                 using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\CPELOGIN;Initial Catalog=LOGIN;Integrated Security=True"))
                 {
-                    string query = "SELECT SUM(ProductPrice * ProductQuantity) AS TotalPrice FROM Cart";
+                    string query = "SELECT SUM(ProductPrice * ProductQuantity) AS TotalPrice FROM CashierCart";
                     SqlCommand command = new SqlCommand(query, conn);
                     conn.Open();
                     object result = command.ExecuteScalar();
@@ -74,9 +65,9 @@ namespace Finals_Requirement_CpE262
 
         private void G2TBut_Home_Click(object sender, EventArgs e)
         {
-            Customer customer = new Customer();
+            CashierShop admin = new CashierShop();
             this.Hide();
-            customer.Show();
+            admin.Show();
         }
 
         private void G2TButton_Exit_Click(object sender, EventArgs e)
@@ -183,7 +174,7 @@ namespace Finals_Requirement_CpE262
                     using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\CPELOGIN;Initial Catalog=LOGIN;Integrated Security=True"))
                     {
                         conn.Open();
-                        string deleteQuery = "DELETE FROM Cart WHERE ProductName = @ProductName";
+                        string deleteQuery = "DELETE FROM CashierCart WHERE ProductName = @ProductName";
                         using (SqlCommand command = new SqlCommand(deleteQuery, conn))
                         {
                             command.Parameters.AddWithValue("@ProductName", productName);
@@ -245,7 +236,7 @@ namespace Finals_Requirement_CpE262
                     conn.Open();
 
                     // Retrieve the current quantity of the product in the cart
-                    string selectCartQuery = "SELECT ProductQuantity FROM Cart WHERE ProductName = @ProductName";
+                    string selectCartQuery = "SELECT ProductQuantity FROM CashierCart WHERE ProductName = @ProductName";
                     using (SqlCommand selectCartCommand = new SqlCommand(selectCartQuery, conn))
                     {
                         selectCartCommand.Parameters.AddWithValue("@ProductName", productName);
@@ -269,7 +260,7 @@ namespace Finals_Requirement_CpE262
                                     if (productStock - quantityDifference >= 0)
                                     {
                                         // Update the quantity in the cart
-                                        string updateCartQuery = "UPDATE Cart SET ProductQuantity = @NewQuantity WHERE ProductName = @ProductName";
+                                        string updateCartQuery = "UPDATE CashierCart SET ProductQuantity = @NewQuantity WHERE ProductName = @ProductName";
                                         using (SqlCommand updateCartCommand = new SqlCommand(updateCartQuery, conn))
                                         {
                                             updateCartCommand.Parameters.AddWithValue("@NewQuantity", newQuantity);
@@ -313,14 +304,13 @@ namespace Finals_Requirement_CpE262
             }
         }
 
-
         private void refresh()
         {
             try
             {
                 using (SqlConnection conn = new SqlConnection(@"Data Source=(localdb)\CPELOGIN;Initial Catalog=LOGIN;Integrated Security=True"))
                 {
-                    string query = "SELECT ImageLogo, ProductName, ProductPrice, ProductQuantity FROM Cart";
+                    string query = "SELECT ImageLogo, ProductName, ProductPrice, ProductQuantity FROM CashierCart";
                     SqlDataAdapter adapter = new SqlDataAdapter(query, conn);
                     DataTable data = new DataTable();
                     adapter.Fill(data);
@@ -349,7 +339,7 @@ namespace Finals_Requirement_CpE262
 
         private void G2But_Checkout_Click(object sender, EventArgs e)
         {
-            Checkout checkout = new Checkout();
+            CashierCheckout checkout = new CashierCheckout();
             this.Hide();
             checkout.Show();
         }
